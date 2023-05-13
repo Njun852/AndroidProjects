@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddNewContent"
+    android:paddingTop="15dp">
+
+    <TextView
+        android:id="@+id/noTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add a Title*"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        android:textColor="#FF0000"/>
+    <EditText
+        android:layout_below="@id/noTitle"
+        android:id="@+id/iSubTitle"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Subject Title"/>
+
+
+
+    <EditText
+        android:id="@+id/iSubDescription"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="5dp"
+        android:gravity="start"
+        android:layout_below="@id/iSubTitle"
+        android:hint="Description" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cornerRadius="0dp"
+        android:insetBottom="0dp"
+        android:insetTop="0dp"
+        android:text="Okay"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="25dp"
+        android:id="@+id/okBtn"
+        android:textSize="20dp"
+        android:layout_marginBottom="15dp"/>
+
+    <Button
+        android:id="@+id/clearBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cornerRadius="0dp"
+        android:insetBottom="0dp"
+        android:insetTop="0dp"
+        android:layout_toLeftOf="@+id/okBtn"
+        android:layout_alignParentBottom="true"
+        android:text="Clear"
+        android:textSize="20dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="15dp"/>
+
+</RelativeLayout>
