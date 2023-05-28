@@ -49,7 +49,9 @@ public class AddNewContent extends AppCompatActivity {
         addContentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addNewContent();
+
+                startActivity(addNewContent());
+                finish();
             }
         });
 
@@ -62,7 +64,7 @@ public class AddNewContent extends AppCompatActivity {
 
     }
 
-    private void addNewSub(int[] rgb){
+    private Intent addNewSub(int[] rgb){
         Intent intent = new Intent(this, MainActivity.class);
           Subject sub = new Subject();
           sub.setRgb(rgb);
@@ -73,11 +75,12 @@ public class AddNewContent extends AppCompatActivity {
           }
           sub.setDescription(subText);
           Subject.Sublist().add(sub);
-          MainActivity.saveData();
-          startActivity(intent);
-          finish();
+
+        //MainActivity.saveData();
+          return intent;
     }
-    private void addNewContent(){
+    private Intent addNewContent(){
+        Intent intent = new Intent();
         boolean isValid = true;
         if(contentTitle.getText().toString().equals("")){
             noTitle.setVisibility(View.VISIBLE);
@@ -91,18 +94,19 @@ public class AddNewContent extends AppCompatActivity {
             int[] rgb = {r, g, b};
             switch (fieldType){
                 case "subject":
-                    addNewSub(rgb);
+                    intent = addNewSub(rgb);
                     break;
                 case "topic":
-                    addNewTopic(rgb);
+                    intent = addNewTopic(rgb);
                     break;
             }
         }else{
             Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
         }
-
+        ReadWriteSystem.writeData();
+        return intent;
     }
-    private void addNewTopic(int rgb[]){
+    private Intent addNewTopic(int rgb[]){
         Intent intent = new Intent(this, activity_subject.class);
         Topic topic = new Topic();
         topic.setRgb(rgb);
@@ -114,12 +118,9 @@ public class AddNewContent extends AppCompatActivity {
         topic.setTopicDetails(TopicDescription);
         Subject.Sublist().get(Subject.index).getTopiclist().add(topic);
 
-        MainActivity.saveData();
-        startActivity(intent);
-        finish();
+        return intent;
 
     }
-
     private void clearContent(){
         contentTitle.setText("");
         contentDescription.setText("");

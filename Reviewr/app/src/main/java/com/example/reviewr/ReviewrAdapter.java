@@ -44,6 +44,7 @@ public class ReviewrAdapter extends RecyclerView.Adapter<ReviewrAdapter.ViewHold
                 topicRecview(holder, Subject.index, index);
                 break;
         }
+
     }
 
     @Override
@@ -107,8 +108,8 @@ public class ReviewrAdapter extends RecyclerView.Adapter<ReviewrAdapter.ViewHold
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView title, description;
-        private LinearLayout bars;
-        private RelativeLayout container;
+
+        private RelativeLayout container, bars;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.Title);
